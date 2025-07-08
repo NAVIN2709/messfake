@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NITT Mess Allocation</title>
+    <link rel="icon" href="nittlogo.png"></link>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f7f7f7;
+      }
+      .top-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        background-color: white;
+        border-bottom: 1px solid #ccc;
+      }
+      .logo {
+        height: 40px;
+      }
+      .menu-icon {
+        font-size: 30px;
+        cursor: pointer;
+      }
+      .logout-btn {
+        height: 30px;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 20px;
+      }
+      .mess-button {
+        padding: 10px 30px;
+        font-size: 18px;
+        margin-bottom: 30px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background-color: white;
+        cursor: pointer;
+      }
+      .card {
+        background-color: white;
+        padding: 30px 25px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 400px;
+        width: 100%;
+        font-size: 18px;
+        line-height: 1.6;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+      .submit-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .submit-btn:hover {
+        background-color: #0056b3;
+      }
+      .exit{
+        height:35px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="top-bar">
+        <img
+          src="nittlogo.png"
+          alt="nitt logo"
+          class="logo"
+        />
+        <div class="menu-icon">&#9776;</div>
+        <div class="logout-btn">
+          <img src="exit.png" class="exit">
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+
+        <div class="card">
+          <form id="messForm">
+            <input
+              type="text"
+              id="name"
+              placeholder="Enter your Name"
+              required
+            />
+            <input
+              type="text"
+              id="roll"
+              placeholder="Enter Roll Number"
+              required
+            />
+            <input
+              type="text"
+              id="mess"
+              placeholder="Enter Mess (e.g. MMIIGF)"
+              required
+            />
+            <input
+              type="text"
+              id="month"
+              placeholder="Enter Month (e.g. July 2025)"
+              required
+            />
+            <button type="submit" class="submit-btn">Submit</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      document
+        .getElementById("messForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // Prevent form from reloading the page
+
+          const name = document.getElementById("name").value.trim();
+          const roll = document.getElementById("roll").value.trim();
+          const mess = document.getElementById("mess").value.trim();
+          const month = document.getElementById("month").value.trim();
+
+          // Save to localStorage
+          localStorage.setItem("studentName", name);
+          localStorage.setItem("rollNumber", roll);
+          localStorage.setItem("messName", mess);
+          localStorage.setItem("messMonth", month);
+
+          // Redirect
+          window.location.href = "page1.html";
+        });
+    </script>
+  </body>
+</html>

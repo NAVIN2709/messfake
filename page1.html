@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NITT Mess Allocation</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: white;
+      }
+
+      .top-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+        background-color: white;
+      }
+
+      .logo {
+        height: 55px;
+      }
+
+      .menu-icon {
+        font-size: 40px;
+        cursor: pointer;
+      }
+
+      .logout-btn {
+        font-size: 24px;
+        color: red;
+        cursor: pointer;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 20px;
+      }
+
+      .mess-button {
+        padding: 10px 30px;
+        font-size: 18px;
+        margin-bottom: 30px;
+        border: 1px solid #e0e1e1;
+        border-radius: 6px;
+        background-color: white;
+        cursor: pointer;
+        width: 350px;
+      }
+
+      .card {
+        background-color: white;
+        padding: 30px;
+        border: 1px solid #e0e1e1;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        max-width: 350px;
+        height: 700px;
+        line-height: 1.4;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        color: #262626;
+        font-weight: 500;
+      }
+      #card-details {
+        border: 1px solid #e6e6e7;
+        padding: 80px 20px 30px 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 500px;
+      }
+      img {
+        height: 40px;
+      }
+      #text-border {
+        border-bottom: 1px solid black;
+        height: 100%;
+      }
+      .text {
+        padding: 0px 25px 25px 25px;
+        height: 100%;
+        word-spacing: 0px;
+        font-size: 35px;
+        font-weight: 550;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="top-bar">
+        <img src="nittlogo.png" alt="nitt logo" class="logo" />
+        <div class="menu-icon">&#9776;</div>
+        <div class="logout-btn">
+          <img src="exit.png" classname="exit-button" />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <button class="mess-button">Mess</button>
+
+        <div class="card">
+          <div id="card-details">
+            <div id="text-border">
+              <div class="text" id="text">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      const name = localStorage.getItem("studentName");
+      const roll = localStorage.getItem("rollNumber");
+      const mess = localStorage.getItem("messName");
+      const month = localStorage.getItem("messMonth");
+
+      const infoBox = document.getElementById("text");
+
+      if (name && roll && mess && month) {
+        infoBox.innerText = `Hi, ${name} (${roll}). You have been allocated ${mess} Mess for ${month}.`;
+      } else {
+        infoBox.innerText = "No allocation details found in localStorage.";
+      }
+    </script>
+  </body>
+</html>
